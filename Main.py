@@ -10,7 +10,6 @@ __author__ = 'Lucas Kjaero'
 
 def print_definitions(words):
     """Print out the definitions of a set of words."""
-    traditional_index, pinyin_index, definition_index = 0, 2, 3
 
     cedict = read_dict()
 
@@ -21,7 +20,7 @@ def print_definitions(words):
 
             for index, entry in enumerate(cedict[word]):
                 if index is not 0:
-                    print("%s (%s) - %s" % (entry[traditional_index], entry[pinyin_index], entry[definition_index]))
+                    print("%s (%s) - %s" % (entry.traditional, entry.pinyin, entry.meaning))
                     print("=" * 80)
 
         except KeyError:
