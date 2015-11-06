@@ -15,8 +15,8 @@ def process_cedict_line(line):
     Returns (traditional, simplified, pinyin, meaning)
     Throws an AssertionError if a line doesn't contain a definition.
     If moving, don't forget to move regular expression patterns too."""
-    assert line[0] is not "#"
     assert len(line) is not 0
+    assert line[0] is not "#"
 
     split_line = line.split(" ")
     traditional_val, simplified_val = split_line[0], split_line[1]
