@@ -2,6 +2,7 @@ import unittest
 
 from Dictionary import read_dict, process_cedict_line
 from InputParsing import drop_punctuation_and_numbers, split_into_sentences, words_in_text
+from KnownWords import scan_new_words
 
 __author__ = 'Lucas Kjaero'
 
@@ -84,3 +85,18 @@ class InputParsingTest(unittest.TestCase):
         self.assertTrue('鄧小平' in words)
         self.assertTrue('高興' in words)
         self.assertTrue('認識' in words)
+
+
+class KnownWordsTest(unittest.TestCase):
+    def test_scan_new_words(self):
+        sample_input = """你叫什麼名字？我叫鄧小平。我高興認識你！"""
+        known_words = {'你', '我'}
+        new_words = scan_new_words(sample_input, known_words=known_words)
+
+        self.assertEqual(len(new_words), 6)
+        self.assertTrue('叫' in new_words)
+        self.assertTrue('什麼' in new_words)
+        self.assertTrue('名字' in new_words)
+        self.assertTrue('鄧小平' in new_words)
+        self.assertTrue('高興' in new_words)
+        self.assertTrue('認識' in new_words)
