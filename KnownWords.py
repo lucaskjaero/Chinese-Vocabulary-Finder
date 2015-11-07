@@ -3,13 +3,6 @@ from InputParsing import words_in_text
 __author__ = 'Lucas Kjaero'
 
 
-def scan_new_words(input_text):
-    """Scans an input text and returns a set of new words."""
-    known_words = get_known_words()
-    new_words = set(word for word in words_in_text(input_text) if word not in known_words)
-    return new_words
-
-
 def get_known_words():
     """Returns a set of known words."""
     known_words = []
@@ -29,3 +22,9 @@ def save_new_words(new_words):
             words.write(word + "\n")
     finally:
         words.close()
+
+
+def scan_new_words(input_text, known_words=get_known_words()):
+    """Scans an input text and returns a set of new words.
+    Defaults to reading from known_words.txt, but can take a set"""
+    return set(word for word in words_in_text(input_text) if word not in known_words)
