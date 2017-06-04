@@ -27,3 +27,5 @@ Temporary Items
 # Created by .ignore support plugin (hsz.mobi)
 
 known_words.txt
+.idea/*
+*.pyc
